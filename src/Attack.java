@@ -10,4 +10,8 @@ public class Attack extends Card {
         }
         placed = true;
     }
+
+    public String toString() {
+        return name + ", type = attack, risk multiplier = " + riskmultiplier + ", placed = " + placed;
+    }
 }

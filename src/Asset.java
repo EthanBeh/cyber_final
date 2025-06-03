@@ -19,6 +19,6 @@ public class Asset extends Card{
     }
 
     public String toString() {
-        return name + ", cost = " + cost + "C, revenue per turn = " + revenue + "C";
+        return name + ", type = asset, cost = " + cost + "C, revenue per turn = " + revenue + "C, placed = " + placed;
     }
 }

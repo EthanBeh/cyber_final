@@ -4,8 +4,6 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("hello");
         Game g = new Game();
-        if (g.initializePlayers()) {
-            g.setNames();
-        }
+        g.runGame();
     }
 }

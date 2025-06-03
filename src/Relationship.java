@@ -13,6 +13,6 @@ public class Relationship extends Card {
     }
 
     public String toString() {
-        return name + ", revenue per turn = " + revenue + "C";
+        return name + ", type = relationship, revenue per turn = " + revenue + "C, placed = " + placed;
     }
 }

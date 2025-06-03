@@ -18,6 +18,6 @@ public class Initiative extends Card {
     public void turn(Player p) { }
 
     public String toString() {
-        return name + ", cost = " + cost + "C, one time revenue = " + revenue + "C, risk = " + risk + "C";
+        return name + ", type = initiative, cost = " + cost + "C, one time revenue = " + revenue + "C, risk = " + risk + "C, placed = " + placed;
     }
 }

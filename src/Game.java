@@ -4,10 +4,19 @@ public class Game {
     Scanner s;
     Player[] players;
     int numPlayers;
-    Card[] cards;
+    public static Card[] cards;
 
     public Game() {
         s = new Scanner(System.in);
+        makeCards();
+    }
+
+    public void runGame() {
+        initializePlayers();
+        setNames();
+        while (!gameOver()) {
+            runRound();
+        }
     }
 
     public boolean initializePlayers() {
@@ -37,7 +46,7 @@ public class Game {
         }
     }
 
-    public void makeCards() {
+    public static void makeCards() {
         //String name, int risk, int cost, int revenue
         //Assets
         Card citProp = new Asset("city property", 5, 15, 6);
@@ -77,13 +86,33 @@ public class Game {
         };
     }
 
-    public void runRound() {
-
+    public boolean gameOver() {
+        for (Player p:players) {
+            if (!p.isIn()) {
+                return true;
+            }
+        } return false;
     }
 
-    public void runTurn(Player p) {
-        for (int i = 0; i < p.getCards().size(); i++) {
-            System.out.println(p.getCards().get(i));
+    public void runRound() {
+        for (Player p:players) {
+            p.turn();
         }
+        s.nextLine();
+    }
+
+    public static Card getRandomCard() {
+        double val = Math.random();
+        int idx;
+        if (val < 0.25) {
+            idx = (int) (Math.random() * 5);
+        } else if (val < 0.5) {
+            idx = (int) (Math.random() * 5) + 5;
+        } else if (val < 0.75) {
+            idx = (int) (Math.random() * 5) + 10;
+        } else {
+            idx = (int) (Math.random() * 9) + 15;
+        }
+        return cards[idx];
     }
 }

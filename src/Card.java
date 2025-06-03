@@ -18,6 +18,8 @@ public class Card {
         this.riskmultiplier = riskmultiplier;
     }
 
+    public boolean isPlaced() { return placed; }
+
     public int getRisk() {
         return risk;
     }
