@@ -1,9 +1,9 @@
 import java.util.ArrayList;
 
 public class Player {
-    String name;
-    ArrayList<Card> cards;
-    int money;
+    String name = "";
+    ArrayList<Card> cards = new ArrayList<Card>();
+    int money = 0;
     boolean in = true;
 
     public void addCard(Card c) {

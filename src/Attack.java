@@ -1,6 +1,6 @@
 public class Attack extends Card {
-    public Attack(float riskmultiplier) {
-        super(riskmultiplier);
+    public Attack(String name, double riskmultiplier) {
+        super(name, riskmultiplier);
     }
 
      public void place(Player p) {

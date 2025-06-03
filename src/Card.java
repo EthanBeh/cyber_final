@@ -3,7 +3,7 @@ public class Card {
     int risk;
     int cost;
     int revenue;
-    float riskmultiplier;
+    double riskmultiplier;
     boolean placed = false;
 
     public Card(String name, int risk, int cost, int revenue) {
@@ -13,7 +13,8 @@ public class Card {
         this.revenue = revenue;
     }
 
-    public Card(float riskmultiplier) {
+    public Card(String name, double riskmultiplier) {
+        this.name = name;
         this.riskmultiplier = riskmultiplier;
     }
 

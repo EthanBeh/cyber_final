@@ -4,7 +4,7 @@ public class Game {
     Scanner s;
     Player[] players;
     int numPlayers;
-    Card[] cards = new Card[25];
+    Card[] cards;
 
     public Game() {
         s = new Scanner(System.in);
@@ -46,19 +46,35 @@ public class Game {
         Card machine = new Asset("machinery", 3, 3, 2);
         Card equip = new Asset("equipment", 1, 2, 1);
         //Relationships
-        Card CEO = new Asset("CEO", 5, 0, 5);
-        Card partner = new Asset("partner", 3, 0, 4);
-        Card fEmploy = new Asset("full-time employee", 2, 0, 3);
-        Card pEmploy = new Asset("part-time employee", 1, 0, 1);
-        Card rEmploy = new Asset("remote employee", 1, 0, 2);
+        Card CEO = new Relationship("CEO", 5, 0, 5);
+        Card partner = new Relationship("partner", 3, 0, 4);
+        Card fEmploy = new Relationship("full-time employee", 2, 0, 3);
+        Card pEmploy = new Relationship("part-time employee", 1, 0, 1);
+        Card rEmploy = new Relationship("remote employee", 1, 0, 2);
         //Initiatives
-        Card collab = new Asset("collboration", 2, 3, 6);
-        Card market = new Asset("new market", 4, 5, 8);
-        Card advert = new Asset("advertisement", 2, 2, 4);
-        Card launch = new Asset("product launch", 3, 4, 6);
-        Card reboot = new Asset("product reboot", 1, 1, 3);
+        Card collab = new Initiative("collboration", 2, 3, 6);
+        Card market = new Initiative("new market", 4, 5, 8);
+        Card advert = new Initiative("advertisement", 2, 2, 4);
+        Card launch = new Initiative("product launch", 3, 4, 6);
+        Card reboot = new Initiative("product reboot", 1, 1, 3);
+        //Attacks
+        Card ransom = new Attack("ransomware", 2);
+        Card breakIn = new Attack("break-in", 2.25);
+        Card decrypt = new Attack("cracked encryption", 3.5);
+        Card expose  = new Attack("exposé", 1);
+        Card phishing = new Attack("phishing", 1.25);
+        Card ddos = new Attack("distributed denial of service", 0.75);
+        Card sniffing = new Attack("packet sniffing", 1);
+        Card usbbait = new Attack("usb baiting", 1.5);
+        Card hacking = new Attack("hacking", 3);
 
-        cards = [citProp, subProp, prodSto, machine, equip, CEO, partner, fEmploy, pEmploy, rEmploy, collab, market, advert, launch, reboot];
+
+        cards = new Card[] {
+            citProp, subProp, prodSto, machine, equip,
+            CEO, partner, fEmploy, pEmploy, rEmploy,
+            collab, market, advert, launch, reboot,
+            ransom, breakIn, decrypt, expose, phishing, ddos, sniffing, usbbait, hacking
+        };
     }
 
     public void runRound() {

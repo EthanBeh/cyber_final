@@ -1,4 +1,3 @@
-
 import java.util.Scanner;
 
 public class Main {
@@ -7,7 +6,6 @@ public class Main {
         Game g = new Game();
         if (g.initializePlayers()) {
             g.setNames();
-
         }
     }
 }
