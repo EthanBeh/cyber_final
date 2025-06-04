@@ -9,22 +9,36 @@ public class Player {
     boolean in = true;
 
     public void turn() {
+        System.out.println();
         Scanner s = new Scanner(System.in);
         int input = 0;
+        for (int i = 0; i < 2; i++) {
+            inhandcards.add(Game.getRandomCard());
+        }
         while (input != -1) {
             printstats();
-            System.out.println("which card from your hand would you like to put down (enter a number), if you wish to put down no cards, enter 0: ");
+            System.out.println("\nwhich card from your hand would you like to put down (enter a number), if you wish to put down no cards, enter 0: ");
             input = Integer.parseInt(s.nextLine()) - 1;
-            //use the input to use card.place, and use switchtoactive as well
-            os.clear();
+            if (input != -1) {
+                if (inhandcards.get(input) instanceof Attack) {
+                    int attackee = (int) (Math.random() * Game.getNumPlayers());
+                    if (this != Game.getPlayers()[attackee]) {
+                        inhandcards.get(input).place(Game.getPlayers()[attackee]);
+                    } System.out.println("unable to place card");
+                } else if (inhandcards.get(input) instanceof Card) {
+                    inhandcards.get(input).place(this);
+                }
+                if (inhandcards.get(input).isPlaced()) {
+                    switchToActive(input);
+                }
+            }
+            System.out.print("\033[H\033[2J");
+            System.out.flush();
         }
     }
 
     public void printstats() {
         System.out.println(name + ", here are your cards:");
-        for (int i = 0; i < 2; i++) {
-            inhandcards.add(Game.getRandomCard());
-        }
         System.out.println("Active:");
         for (int i = 0; i < activecards.size(); i++) {
             if (!(activecards.get(i) instanceof Attack)) {
@@ -40,7 +54,11 @@ public class Player {
     }
 
     public void switchToActive(int index) {
-        activecards.add(inhandcards.remove(index));
+        if (!(inhandcards.get(index) instanceof Attack)) {
+            activecards.add(inhandcards.remove(index));
+        } else {
+            inhandcards.remove(index);
+        }
     }
 
     public boolean isIn() {

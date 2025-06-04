@@ -2,8 +2,8 @@ import java.util.Scanner;
 
 public class Game {
     Scanner s;
-    Player[] players;
-    int numPlayers;
+    static Player[] players;
+    static int numPlayers;
     public static Card[] cards;
 
     public Game() {
@@ -40,6 +40,7 @@ public class Game {
 
     public void setNames() {
         for (int i = 0; i < numPlayers; i++) {
+            System.out.println();
             players[i] = new Player();
             System.out.println("player " + (i + 1)+ " enter your name: ");
             players[i].setName(s.nextLine());
@@ -98,7 +99,14 @@ public class Game {
         for (Player p:players) {
             p.turn();
         }
-        s.nextLine();
+    }
+
+    public static Player[] getPlayers() {
+        return players;
+    }
+
+    public static int getNumPlayers() {
+        return numPlayers;
     }
 
     public static Card getRandomCard() {
